@@ -35,7 +35,7 @@ Documentation = "https://github.com/tenstorrent-riscv-software/repotool/tree/mai
 Issues = "https://github.com/tenstorrent-riscv-software/repotool/issues"
 
 [project.optional-dependencies]
-dev = ["pytest==9.2.0", "ruff==0.16.1", "mypy==2.4.1"]
+dev = ["pytest==9.2.0", "ruff==0.17.5", "mypy==2.4.1"]
 
 [project.scripts]
 rt = "repotool:main"
