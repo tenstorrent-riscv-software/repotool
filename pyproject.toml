@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tt-repotool"
+version = "0.1.0"
+description = "Lightweight meta-repo coordinator with a TOML manifest"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "LICENSE_understanding.txt"]
+requires-python = ">=3.12"
+dependencies = []
+authors = [{ name = "Michael Ellerman", email = "mpe@oss.tenstorrent.com" }]
+keywords = ["git", "multi-repo", "meta-repo", "manifest", "submodules", "cli"]
+# No license classifier: setuptools rejects one alongside the license
+# expression above.
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
+    "Topic :: Software Development :: Version Control :: Git",
+]
+
+[project.urls]
+Homepage = "https://github.com/tenstorrent-riscv-software/repotool"
+Documentation = "https://github.com/tenstorrent-riscv-software/repotool/tree/main/docs"
+Issues = "https://github.com/tenstorrent-riscv-software/repotool/issues"
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "ruff==0.17.5", "mypy==2.4.1"]
+
+[project.scripts]
+rt = "repotool:main"
+
+[tool.setuptools]
+py-modules = ["repotool"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+# Skip example workspaces (their nested .git makes ruff's gitignore handling
+# treat them as separate repos, so the outer .gitignore patterns don't apply).
+extend-exclude = ["examples"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+# Report uses of standard library APIs marked deprecated, which are candidates
+# for removal in a later Python.
+enable_error_code = ["deprecated"]
