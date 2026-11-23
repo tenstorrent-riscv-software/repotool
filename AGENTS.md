@@ -357,7 +357,8 @@ are skipped too. Affects only the orphan walk; every other command ignores it.
 
 - **CLI:** `argparse` (stdlib).
 - **License headers:** every source file starts with these SPDX headers,
-  after the shebang if there is one. Add them to new files:
+  after the shebang if there is one, and `.github/workflows/spdx.yml` checks
+  them on every pull request. Add them to new files:
 
   ```
   # SPDX-License-Identifier: Apache-2.0

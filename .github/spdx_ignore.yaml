@@ -1,0 +1,7 @@
+# Paths for the SPDX checker (.github/workflows/spdx.yml) to skip. The
+# checker only examines source files it recognises, which here means the
+# Python files, all of which carry SPDX headers, so nothing needs ignoring
+# yet. Add vendored or generated files here if any are introduced.
+ignore:
+  perform_check: no
+  include: []

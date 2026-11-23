@@ -1,0 +1,32 @@
+name: SPDX
+
+# Check that source files carry SPDX license headers with an approved
+# license, using Tenstorrent's shared checker. Same triggers as CI.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+# Actions are pinned to full commit SHAs, since tags and branches can be
+# moved; Dependabot (.github/dependabot.yml) proposes updates.
+
+# A newer push to the same pull request cancels the superseded run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check-spdx-licenses:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check SPDX licenses
+        uses: tenstorrent/tt-github-actions/.github/actions/spdx-checker@5f18fe6f86d825c87924d5559ac442ac7eca534f # main as of 2026-11-06
+        with:
+          ignore_config_file: .github/spdx_ignore.yaml
+          verbose: "true"
