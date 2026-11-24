@@ -14,7 +14,7 @@ dependencies = []
 authors = [{ name = "Michael Ellerman", email = "mpe@oss.tenstorrent.com" }]
 keywords = ["git", "multi-repo", "meta-repo", "manifest", "submodules", "cli"]
 # No license classifier: setuptools rejects one alongside the license
-# expression above.
+# expression above. Keep the Python versions in step with the CI matrix.
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",

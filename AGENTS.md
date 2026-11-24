@@ -371,9 +371,11 @@ are skipped too. Affects only the orphan walk; every other command ignores it.
   `repotool` on PyPI is an unrelated project; the module stays `repotool` and
   the command `rt`. Console-script entry point `rt = "repotool:main"`
   for `pip install -e .` development; the script remains directly runnable.
-- **Pinned dependencies:** the `[dev]` tools are pinned to exact versions, so
-  a new upstream release can't change lint, type-check or test results on its
-  own. Keep new dependencies pinned the same way.
+- **Pinned dependencies:** the `[dev]` tools are pinned to exact versions, and
+  the GitHub Actions in `.github/workflows/` to full commit SHAs with a version
+  comment, so a new upstream release can't change CI results on its own.
+  `.github/dependabot.yml` proposes updates weekly. Keep new dependencies
+  pinned the same way.
 - **Dev workflow:** `just venv` to bootstrap, then `just test` to run all the
   checks, or `just lint` / `just typecheck` / `just pytest` individually.
   `just install_hooks` wires up `prek` (uses `.pre-commit-config.yaml`, which
