@@ -1,0 +1,24 @@
+# Weekly update proposals for the pinned dependencies: the GitHub Actions
+# in .github/workflows (pinned to commit SHAs) and the dev tools in
+# pyproject.toml's [dev] extra (pinned to exact versions).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ["*"]
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: dev
+    groups:
+      dev-tools:
+        patterns: ["*"]

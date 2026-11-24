@@ -47,7 +47,7 @@ builtin`), which the `pre-commit` tool doesn't support.
 - **Add tests.** Behaviour changes need tests in `tests/`. Tests build real git
   repositories in pytest's `tmp_path`; don't use mocks.
 - **Pass the checks.** `just test`, which runs lint, typecheck and pytest, must
-  pass.
+  pass. CI runs the same checks on every pull request.
 - **Update the documentation.** Document user-visible changes in the relevant
   page under `docs/`, and in `README.md` only if the overview changes. Record
   changes to a design decision in [`docs/design.md`](docs/design.md).
